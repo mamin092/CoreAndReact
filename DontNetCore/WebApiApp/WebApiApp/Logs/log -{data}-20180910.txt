@@ -7,3 +7,47 @@
 2018-09-10T07:45:39.5720829+06:00 0HLGMNSE1N0GC:00000001 [INF] Executing ObjectResult, writing value of type '"System.String[]"'. (8a1b66c8)
 2018-09-10T07:45:39.8159045+06:00 0HLGMNSE1N0GC:00000001 [INF] Executed action "WebApiApp.Controllers.ValuesController.Get (WebApiApp)" in 247.3306ms (afa2e885)
 2018-09-10T07:45:39.8736287+06:00 0HLGMNSE1N0GC:00000001 [INF] Request finished in 1119.7086ms 200 application/json; charset=utf-8 (791a596a)
+2018-09-10T09:03:56.5930261+06:00  [INF] Entity Framework Core "2.1.2-rtm-30932" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-09-10T09:07:28.8357422+06:00  [INF] Entity Framework Core "2.1.2-rtm-30932" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-09-10T09:11:56.2790070+06:00  [INF] Entity Framework Core "2.1.2-rtm-30932" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-09-10T09:12:08.7275704+06:00  [INF] Executed DbCommand ("1,396"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [CoreWebApiAppDb];" (0723d8ff)
+2018-09-10T09:12:09.6343924+06:00  [INF] Executed DbCommand ("900"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [CoreWebApiAppDb] SET READ_COMMITTED_SNAPSHOT ON;
+END;" (0723d8ff)
+2018-09-10T09:12:10.1157463+06:00  [INF] Executed DbCommand ("191"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2018-09-10T09:12:10.1632288+06:00  [INF] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2018-09-10T09:12:10.1821032+06:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2018-09-10T09:12:10.2268458+06:00  [INF] Applying migration '"20180910030356_InitMig"'. (0e2ac64d)
+2018-09-10T09:12:10.3800978+06:00  [INF] Executed DbCommand ("66"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Department] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [Code] nvarchar(max) NULL,
+    CONSTRAINT [PK_Department] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-09-10T09:12:10.4449613+06:00  [INF] Executed DbCommand ("65"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Students] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [Phone] nvarchar(max) NULL,
+    [DepartmentId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Students] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Students_Department_DepartmentId] FOREIGN KEY ([DepartmentId]) REFERENCES [Department] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-09-10T09:12:10.4592853+06:00  [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Students_DepartmentId] ON [Students] ([DepartmentId]);" (0723d8ff)
+2018-09-10T09:12:10.5287891+06:00  [INF] Executed DbCommand ("69"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20180910030356_InitMig', N'2.1.2-rtm-30932');" (0723d8ff)
